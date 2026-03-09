@@ -1,67 +1,41 @@
 # NZBGet Configuration
 
-> Step-by-step first-time setup for NZBGet (Usenet downloader).
+NZBGet is optional in this repo. The transcript focused on qBittorrent, but if you want Usenet alongside torrents, use these settings so the paths stay organized under the same shared `/data` tree.
 
-**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ qBittorrentVPN Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)** | **[➡️ Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)**
+**[Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[qBittorrentVPN Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)** | **[Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)**
 
----
+## Step 1 - Open NZBGet
 
-## Step 1 — Open NZBGet
+Open `http://localhost:6789` and log in with the `NZBGET_USER` and `NZBGET_PASS` values from your compose file.
 
-1. Open a browser and go to: `http://localhost:6789`
-2. Log in with the username and password you set in the compose file (`NZBGET_USER` / `NZBGET_PASS`).
+## Step 2 - Add Your Usenet Server
 
----
+1. Go to **Settings -> News-Servers**.
+2. Add the server details from your Usenet provider.
+3. Save and reload.
+4. Use the built-in test button to confirm the server works.
 
-## Step 2 — Add a Usenet News Server
+## Step 3 - Set the Paths
 
-You need a **Usenet provider** (paid service). Common ones: Newshosting, Eweka, UsenetExpress, etc.
+Go to **Settings -> Paths** and set:
 
-1. In the NZBGet Web UI, go to **Settings → News-Servers**.
-2. Click **Add server**.
-3. Fill in the details from your Usenet provider:
-   - **Active:** Yes
-   - **Host:** (your provider's server address, e.g. `news.newshosting.com`)
-   - **Port:** 563 (SSL) or 119 (non-SSL)
-   - **Username:** your Usenet account username
-   - **Password:** your Usenet account password
-   - **Connections:** 20–50 (check your plan limits)
-   - **Encryption:** Yes (if using port 563)
-4. Click **Save** and **Reload**.
+- **MainDir:** `/data/usenet`
+- **DestDir:** `/data/usenet/complete`
+- **InterDir:** `/data/usenet/incomplete`
 
----
+Save and reload when prompted.
 
-## Step 3 — Verify the Server Connection
+## Step 4 - Let Prowlarr Manage Indexers
 
-1. Go to **Settings → News-Servers**.
-2. Click **Test** next to your server.
-3. You should see a green checkmark. If not, double-check your host/port/credentials.
+If you are using the full stack, do not manually add a lot of NZB indexers here. Configure them once in Prowlarr and let Prowlarr sync them outward.
 
----
+## Step 5 - Connection Details for Other Apps
 
-## Step 4 — Configure Paths
+Because NZBGet shares the qBittorrent service network in this compose file, other containers should connect to it like this:
 
-1. Go to **Settings → Paths**.
-2. Confirm these are set (you may have done this in the qBittorrentVPN wiki):
-   - **MainDir:** `/data/nzbget`
-   - **DestDir:** `/data/complete`
-   - **InterDir:** `/data/incomplete`
-3. Click **Save** and **Reload**.
+- Host: `qbittorrent`
+- Port: `6789`
 
----
+Use those values if you add NZBGet as a download client in Prowlarr, Radarr, or Sonarr.
 
-## Step 5 — Add an Indexer (NZB Source)
-
-Indexers are websites that list Usenet content. You can configure them here or let Prowlarr manage them (recommended).
-
-> If you're using the Full Stack, skip manual indexer setup here — **Prowlarr will handle this automatically** once it's configured.
-
----
-
-## Step 6 — Note the API Key
-
-Radarr, Sonarr, and Prowlarr will need to talk to NZBGet. They use a simple username/password — no API key needed for NZBGet specifically, but keep your credentials handy.
-
----
-
-**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ qBittorrentVPN Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)** | **[➡️ Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)**
+**[Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[qBittorrentVPN Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)** | **[Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)**

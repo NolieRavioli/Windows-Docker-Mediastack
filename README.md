@@ -61,17 +61,16 @@ Follow the [Docker Desktop Installation wiki page](https://github.com/NolieRavio
 
 ### Download & Configure the Compose File
 
-Download [`docker-compose.qbittorrent-only.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.qbittorrent-only.yml) from this repo and follow the [Docker Compose Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#-qbittorrent-only-stack) to edit your paths, timezone, and VPN credentials.
+Download [`docker-compose.qbittorrent-only.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.qbittorrent-only.yml) from this repo and follow the [Docker Compose Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#qbittorrent-only-stack) to edit your paths, timezone, and VPN credentials.
 
 ### Configure qBittorrent
 
-Once the container is running, follow the [qBittorrentVPN Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration#-qbittorrent-only-stack) to:
+Once the container is running, follow the [qBittorrentVPN Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration) to:
 
 - Change the default admin password
 - Verify the VPN is active
-- Set your download folders:
-  - **Incomplete downloads:** `/data/incomplete`
-  - **Completed downloads:** `/data/complete`
+- Set your download folders under the shared `/data/torrents` tree
+- Create the qBittorrent categories used later by Radarr and Sonarr
 - Configure ProtonVPN port forwarding for better speeds
 
 ---
@@ -80,7 +79,7 @@ Once the container is running, follow the [qBittorrentVPN Configuration wiki pag
 
 ### Download & Configure the Compose File
 
-Download [`docker-compose.full-stack.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.full-stack.yml) and follow the [Full Stack section of the Docker Compose Configuration wiki](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#-full-stack) to edit paths, timezone, VPN credentials, and NZBGet login.
+Download [`docker-compose.full-stack.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.full-stack.yml) and follow the [Full Stack section of the Docker Compose Configuration wiki](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#full-stack) to edit paths, timezone, VPN credentials, and NZBGet login.
 
 ### Configure Each App
 
@@ -91,7 +90,7 @@ After running `docker compose up -d`, configure each app in order. Each one has 
 3. **[Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** — Add indexers and connect to Radarr/Sonarr
 4. **[Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** — Set download client, root folder, quality profiles
 5. **[Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)** — Same as Radarr but for TV shows
-6. **[Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Seerr-Configuration)** — Connect to Plex, Radarr, and Sonarr; invite users
+6. **[Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)** — Connect to Plex, Radarr, and Sonarr; invite users
 
 ### Full Stack URLs (once running)
 

@@ -1,82 +1,98 @@
 # Prowlarr Configuration
 
-> Prowlarr is your indexer manager — it connects to torrent and Usenet indexer sites and pushes them to Radarr/Sonarr automatically.
+Prowlarr manages your indexers and pushes them into Radarr and Sonarr so you only have to maintain them in one place.
 
-**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ NZBGet Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)** | **[➡️ Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)**
+**[Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[NZBGet Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)** | **[Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)**
 
----
+## Step 1 - Open Prowlarr
 
-## Step 1 — Open Prowlarr
+Open `http://localhost:9696`.
 
-1. Go to: `http://localhost:9696`
-2. On first launch, you'll be asked to create an **admin username and password**. Do that now.
+On first launch, create your admin username and password.
 
----
+## Step 2 - Add qBittorrent as a Download Client
 
-## Step 2 — Add Indexers
+1. Go to **Settings -> Download Clients**.
+2. Click **Add** and choose **qBittorrent**.
+3. Set:
 
-Indexers are the sites Prowlarr searches for content.
+   - **Host:** `qbittorrent`
+   - **Port:** `8113`
+   - **Username:** your qBittorrent username
+   - **Password:** your qBittorrent password
+   - **Use SSL:** off
 
-1. In Prowlarr, go to **Indexers → Add Indexer**.
-2. Search for your preferred indexer (you can search by name inside Prowlarr — it has a large built-in list of public and private trackers). Common choices include public trackers like The Pirate Bay, 1337x, or any private tracker you have access to.
-3. Fill in any required credentials (username, password, or API key from that site).
-4. Click **Test** — you should see a green checkmark.
+4. Click **Test** and make sure you get a green check.
 5. Click **Save**.
-6. Repeat for any additional indexers.
 
----
+You can leave the category blank here unless you want a separate manual-grab category.
 
-## Step 3 — Add Applications (Connect to Radarr/Sonarr)
+## Step 3 - Add NZBGet If You Use Usenet
 
-This tells Prowlarr to automatically sync indexers into Radarr and Sonarr.
+If you also use NZBGet:
 
-1. Go to **Settings → Apps**.
-2. Click **Add Application** → select **Radarr**.
-3. Fill in:
+1. Go to **Settings -> Download Clients**.
+2. Add **NZBGet**.
+3. Set:
+
+   - **Host:** `qbittorrent`
+   - **Port:** `6789`
+   - **Username:** your NZBGet username
+   - **Password:** your NZBGet password
+   - **Use SSL:** off unless you changed it yourself
+
+4. Test and save.
+
+## Step 4 - Add Indexers
+
+1. Go to **Indexers -> Add Indexer**.
+2. Add the trackers or NZB indexers you actually use.
+3. Test each one before saving it.
+
+If you want a harmless test source first, use a legal/public-domain source such as Internet Archive if it is available in your Prowlarr build.
+
+## Step 5 - FlareSolverr for Protected Indexers
+
+Only do this if one of your indexers requires it.
+
+1. Go to **Settings -> Indexers**.
+2. Find the FlareSolverr section.
+3. Set the URL to `http://flaresolverr:8191`.
+4. Save.
+
+## Step 6 - Connect Prowlarr to Radarr and Sonarr
+
+Do this after you have copied the API keys from Radarr and Sonarr.
+
+For Radarr:
+
+1. Go to **Settings -> Apps**.
+2. Add **Radarr**.
+3. Set:
+
    - **Prowlarr Server:** `http://prowlarr:9696`
    - **Radarr Server:** `http://radarr:7878`
-   - **API Key:** *(copy from Radarr — see below)*
-4. Click **Test** → **Save**.
-5. Repeat for **Sonarr** (server: `http://sonarr:8989`).
+   - **API Key:** copy it from Radarr -> **Settings -> General**
 
-> **How to get the Radarr/Sonarr API key:**
-> Open Radarr → **Settings → General** → copy the API Key shown there.
-> Do the same for Sonarr.
+4. Test and save.
 
----
+For Sonarr:
 
-## Step 4 — Add Download Clients (Optional — Radarr/Sonarr can do this too)
+1. Add **Sonarr**.
+2. Set:
 
-You can configure download clients directly in Prowlarr for manual searches:
+   - **Prowlarr Server:** `http://prowlarr:9696`
+   - **Sonarr Server:** `http://sonarr:8989`
+   - **API Key:** copy it from Sonarr -> **Settings -> General**
 
-1. Go to **Settings → Download Clients**.
-2. Click **Add** → select **qBittorrent** or **NZBGet**.
-3. Fill in connection details:
-   - **Host:** `localhost` (or the container name)
-   - **Port:** `8113` (qBittorrent) or `6789` (NZBGet)
-   - **Username/Password:** your credentials
-4. Click **Test** → **Save**.
+3. Test and save.
 
----
+## Step 7 - Verify Sync
 
-## Step 5 — Add FlareSolverr (For Cloudflare-Protected Indexers)
+After Radarr and Sonarr are connected:
 
-If any of your indexers are blocked by Cloudflare, FlareSolverr handles that automatically.
+1. Check **Radarr -> Settings -> Indexers**.
+2. Check **Sonarr -> Settings -> Indexers**.
+3. Your Prowlarr indexers should appear there automatically.
 
-1. Go to **Settings → Indexers**.
-2. Find **FlareSolverr** and set:
-   - **URL:** `http://flaresolverr:8191`
-3. Click **Save**.
-
-> FlareSolverr is already running as part of your stack — you just need to point Prowlarr at it.
-
----
-
-## Step 6 — Verify Sync
-
-1. Go to **Indexers** — you should see your added indexers listed.
-2. Go to **Radarr** and check **Settings → Indexers** — your indexers should now appear there automatically.
-
----
-
-**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ NZBGet Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)** | **[➡️ Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)**
+**[Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[NZBGet Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)** | **[Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)**

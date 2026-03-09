@@ -1,88 +1,111 @@
 # Radarr Configuration
 
-> Radarr monitors and automatically downloads movies.
+Radarr watches for movies, sends grabs to your download client, and imports completed files into your library.
 
-**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** | **[➡️ Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
+**[Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** | **[Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
 
----
+## Step 1 - Open Radarr
 
-## Step 1 — Open Radarr
+Open `http://localhost:7878`.
 
-1. Go to: `http://localhost:7878`
-2. On first launch, you'll walk through a short setup wizard. Complete it.
-3. Go to **Settings → General** and note your **API Key** — you'll need it for Prowlarr and Seerr.
+Finish the initial setup page, then go to **Settings -> General** and copy the API key. You will need it for Prowlarr and Seerr.
 
----
+## Step 2 - Set the Root Folder and Import Behavior
 
-## Step 2 — Add a Download Client
+1. Go to **Settings -> Media Management**.
+2. Click **Show Advanced**.
+3. Add this root folder:
 
-1. Go to **Settings → Download Clients**.
-2. Click **+** to add a new client.
+```text
+/data/media/movies
+```
 
-**For qBittorrent:**
-- Select **qBittorrent**
-- Host: `qbittorent`
-- Port: `8113`
-- Username: your qBittorrent username
-- Password: your qBittorrent password
-- Category: `movies`
-- Click **Test** → **Save**
+4. Confirm these settings:
 
-**For NZBGet:**
-- Select **NZBGet**
-- Host: `qbittorent`
-- Port: `6789`
-- Username: your NZBGet username
-- Password: your NZBGet password
-- Category: `movies`
-- Click **Test** → **Save**
+   - **Use Hardlinks instead of Copy:** on
+   - **Rename Movies:** optional, but recommended
+   - **Import Extra Files:** include `srt`, `sub`, and `nfo` if you want subtitles and metadata imported
 
----
+5. Save your changes.
 
-## Step 3 — Add Root Folder
+Use `/data/media/movies`, not `/media/movies`, so Radarr imports from the same shared `/data` tree that qBittorrent uses.
 
-1. Go to **Settings → Media Management**.
-2. Scroll down to **Root Folders**, click **Add Root Folder**.
-3. Set the path to `/media/movies`
-4. Click **OK**.
+## Step 3 - Add qBittorrent as a Download Client
 
----
+1. Go to **Settings -> Download Clients**.
+2. Add **qBittorrent**.
+3. Set:
 
-## Step 4 — Configure Quality Profiles
+   - **Host:** `qbittorrent`
+   - **Port:** `8113`
+   - **Username:** your qBittorrent username
+   - **Password:** your qBittorrent password
+   - **Category:** `movies`
+   - **Use SSL:** off
 
-> Pre-made quality and custom format profiles will be available to import — check the [repo releases](https://github.com/NolieRavioli/Windows-Docker-Mediastack/releases) for configuration files.
+4. Test and save.
 
-For now:
-1. Go to **Settings → Profiles**.
-2. Review the default profiles (HD-1080p, Ultra-HD, etc.) and choose which one suits you.
-3. You can leave these as defaults until the import files are available.
+The category must match the qBittorrent category you created earlier.
 
----
+## Step 4 - Add NZBGet If You Use Usenet
 
-## Step 5 — Enable Rename (Optional but Recommended)
+If you are using NZBGet as well:
 
-1. Go to **Settings → Media Management**.
-2. Enable **Rename Movies**.
-3. Use the default naming format or customize it.
-4. Click **Save**.
+1. Add **NZBGet** under **Settings -> Download Clients**.
+2. Set:
 
----
+   - **Host:** `qbittorrent`
+   - **Port:** `6789`
+   - **Username:** your NZBGet username
+   - **Password:** your NZBGet password
+   - **Category:** `movies`
 
-## Step 6 — Copy the API Key
+3. Test and save.
 
-1. Go to **Settings → General**.
-2. Copy the **API Key** — you'll paste it into Prowlarr (if you haven't already) and Seerr.
+## Step 5 - Add Radarr Back Into Prowlarr
 
----
+If you have not already done it in the Prowlarr page:
 
-## Step 7 — Add Your First Movie (Test)
+1. Open Prowlarr.
+2. Go to **Settings -> Apps**.
+3. Add **Radarr** with:
 
-1. Click **+ Add Movie** (or Movies → Add New).
-2. Search for any movie.
-3. Set the quality profile and root folder.
-4. Click **Add Movie**.
-5. If Prowlarr is configured, Radarr will search for it automatically.
+   - **Prowlarr Server:** `http://prowlarr:9696`
+   - **Radarr Server:** `http://radarr:7878`
+   - **API Key:** the key you copied from Radarr
 
----
+4. Test and save.
 
-**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** | **[➡️ Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
+## Step 6 - Test an Import
+
+1. Add a movie in Radarr.
+2. Let qBittorrent finish downloading it.
+3. Check **Activity** in Radarr.
+4. When the import succeeds, the movie should appear under:
+
+```text
+/data/media/movies
+```
+
+while the original torrent data remains under:
+
+```text
+/data/torrents/movies
+```
+
+If that happens, your category mapping and import path are correct.
+
+## Common Problems
+
+**Radarr cannot talk to qBittorrent**
+
+- Use `qbittorrent`, not `localhost`, for the host field.
+- Make sure qBittorrent is already healthy before testing.
+
+**Imports fail or copy instead of hardlinking**
+
+- Keep the root folder under `/data/media/...`.
+- Keep qBittorrent downloads under `/data/torrents/...`.
+- Make sure the qBittorrent category is exactly `movies`.
+
+**[Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** | **[Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**

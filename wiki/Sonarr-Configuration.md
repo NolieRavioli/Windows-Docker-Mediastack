@@ -1,87 +1,111 @@
 # Sonarr Configuration
 
-> Sonarr monitors and automatically downloads TV shows.
+Sonarr does the same job as Radarr, but for TV shows and episodes.
 
-**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[➡️ Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Seerr-Configuration)**
+**[Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)**
 
----
+## Step 1 - Open Sonarr
 
-## Step 1 — Open Sonarr
+Open `http://localhost:8989`.
 
-1. Go to: `http://localhost:8989`
-2. Complete the first-launch setup wizard.
-3. Go to **Settings → General** and note your **API Key** — you'll need it for Prowlarr and Seerr.
+Finish the initial setup page, then go to **Settings -> General** and copy the API key. You will need it for Prowlarr and Seerr.
 
----
+## Step 2 - Set the Root Folder and Import Behavior
 
-## Step 2 — Add a Download Client
+1. Go to **Settings -> Media Management**.
+2. Click **Show Advanced**.
+3. Add this root folder:
 
-1. Go to **Settings → Download Clients**.
-2. Click **+** to add a new client.
+```text
+/data/media/tv
+```
 
-**For qBittorrent:**
-- Select **qBittorrent**
-- Host: `localhost`
-- Port: `8113`
-- Username: your qBittorrent username
-- Password: your qBittorrent password
-- Category: `tv`
-- Click **Test** → **Save**
+4. Confirm these settings:
 
-**For NZBGet:**
-- Select **NZBGet**
-- Host: `localhost`
-- Port: `6789`
-- Username: your NZBGet username
-- Password: your NZBGet password
-- Category: `tv`
-- Click **Test** → **Save**
+   - **Use Hardlinks instead of Copy:** on
+   - **Rename Episodes:** optional, but recommended
+   - **Import Extra Files:** include `srt`, `sub`, and `nfo` if you want subtitles and metadata imported
 
----
+5. Save your changes.
 
-## Step 3 — Add Root Folder
+Use `/data/media/tv`, not `/media/tv`, so Sonarr imports from the same shared `/data` tree that qBittorrent uses.
 
-1. Go to **Settings → Media Management**.
-2. Scroll down to **Root Folders**, click **Add Root Folder**.
-3. Set the path to `/media/tv`
-4. Click **OK**.
+## Step 3 - Add qBittorrent as a Download Client
 
----
+1. Go to **Settings -> Download Clients**.
+2. Add **qBittorrent**.
+3. Set:
 
-## Step 4 — Configure Quality Profiles
+   - **Host:** `qbittorrent`
+   - **Port:** `8113`
+   - **Username:** your qBittorrent username
+   - **Password:** your qBittorrent password
+   - **Category:** `tv`
+   - **Use SSL:** off
 
-> Pre-made quality and custom format profiles will be available to import — check the [repo releases](https://github.com/NolieRavioli/Windows-Docker-Mediastack/releases) for configuration files.
+4. Test and save.
 
-For now:
-1. Go to **Settings → Profiles**.
-2. Review the default profiles and choose one.
-3. You can leave these as defaults until the import files are available.
+The category must match the qBittorrent category you created earlier.
 
----
+## Step 4 - Add NZBGet If You Use Usenet
 
-## Step 5 — Enable Rename (Optional but Recommended)
+If you are using NZBGet as well:
 
-1. Go to **Settings → Media Management**.
-2. Enable **Rename Episodes**.
-3. Use the default naming format or customize it.
-4. Click **Save**.
+1. Add **NZBGet** under **Settings -> Download Clients**.
+2. Set:
 
----
+   - **Host:** `qbittorrent`
+   - **Port:** `6789`
+   - **Username:** your NZBGet username
+   - **Password:** your NZBGet password
+   - **Category:** `tv`
 
-## Step 6 — Copy the API Key
+3. Test and save.
 
-1. Go to **Settings → General**.
-2. Copy the **API Key** — paste it into Prowlarr (if you haven't already) and Seerr.
+## Step 5 - Add Sonarr Back Into Prowlarr
 
----
+If you have not already done it in the Prowlarr page:
 
-## Step 7 — Add Your First Show (Test)
+1. Open Prowlarr.
+2. Go to **Settings -> Apps**.
+3. Add **Sonarr** with:
 
-1. Click **+ Add Series**.
-2. Search for any TV show.
-3. Set the quality profile, root folder, and whether to monitor future episodes.
-4. Click **Add Series**.
+   - **Prowlarr Server:** `http://prowlarr:9696`
+   - **Sonarr Server:** `http://sonarr:8989`
+   - **API Key:** the key you copied from Sonarr
 
----
+4. Test and save.
 
-**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[➡️ Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Seerr-Configuration)**
+## Step 6 - Test an Import
+
+1. Add a series in Sonarr.
+2. Let qBittorrent finish downloading the first episode pack or episode.
+3. Check **Activity** in Sonarr.
+4. When the import succeeds, the files should appear under:
+
+```text
+/data/media/tv
+```
+
+while the original torrent data remains under:
+
+```text
+/data/torrents/tv
+```
+
+If that happens, your category mapping and import path are correct.
+
+## Common Problems
+
+**Sonarr cannot talk to qBittorrent**
+
+- Use `qbittorrent`, not `localhost`, for the host field.
+- Make sure qBittorrent is already healthy before testing.
+
+**Imports fail or copy instead of hardlinking**
+
+- Keep the root folder under `/data/media/...`.
+- Keep qBittorrent downloads under `/data/torrents/...`.
+- Make sure the qBittorrent category is exactly `tv`.
+
+**[Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)**

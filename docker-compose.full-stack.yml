@@ -1,0 +1,142 @@
+services:
+    qbittorrent:
+        image: binhex/arch-qbittorrentvpn:latest
+        container_name: qtorrent
+        ports:
+            - "6789:6789"  # NZBGet Web UI (tunneled through qBittorrent's VPN network)
+            - "8113:8113"  # qBittorrent Web UI accessible at http://<YOUR_PC_IP>:8113
+        volumes:
+            - /change/to/path/to/your/configuration/storage/for/qtorrent:/config
+            - /path/to/your/hard/drive/BIG/storage/data:/data
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "5"
+        environment:
+            - VPN_ENABLED=yes
+
+            # LOCAL SETTINGS:
+            - DEBUG=true
+            - WEBUI_PORT=8113
+            - VPN_INPUT_PORTS=6789,8113
+            - ENABLE_PRIVOXY=no
+            - LAN_NETWORK=192.168.1.0/24  # Change to your router's subnet (e.g. 192.168.0.0/24)
+            - TZ=America/Denver
+            - PUID=1000
+            - PGID=1000
+
+            # WIREGUARD + ProtonVPN (default):
+            - VPN_PROV=protonvpn
+            - VPN_CLIENT=wireguard
+            - STRICT_PORT_FORWARD=yes
+            - NAME_SERVERS=1.1.1.1,1.0.0.1
+            - VPN_USER=<<<YOUR_PROTONVPN_USERNAME>>>+pmp
+            - VPN_PASS=<<<YOUR_PROTONVPN_VPN_PASSWORD>>>
+
+        # OPENVPN (comment out the privileged/sysctls block below and uncomment this):
+        #cap_add:
+        #    - NET_ADMIN
+        #devices:
+        #    - /dev/net/tun:/dev/net/tun
+
+        # WIREGUARD (required — comment out if using OpenVPN above):
+        privileged: true
+        sysctls:
+            net.ipv4.conf.all.src_valid_mark: 1
+
+        healthcheck:
+            test: ["CMD", "curl", "-fsS", "http://localhost:8113"]
+            interval: 3s
+            timeout: 1s
+            retries: 120
+            start_period: 10s
+        restart: unless-stopped
+
+    nzbget:
+        image: lscr.io/linuxserver/nzbget:latest
+        container_name: nzbget
+        network_mode: "service:qtorrent"
+        depends_on:
+            qtorrent:
+                condition: service_healthy
+        volumes:
+            - /change/to/path/to/your/configuration/storage/for/nzbget:/config
+            - /path/to/your/hard/drive/BIG/storage/data:/data
+            - /path/to/your/hard/drive/BIG/storage/media:/media
+        environment:
+            - TZ=America/Denver
+            - PUID=1000
+            - PGID=1000
+            - NZBGET_USER=<<<CHOOSE_A_USERNAME>>>
+            - NZBGET_PASS=<<<CHOOSE_A_PASSWORD>>>
+        restart: unless-stopped
+
+    radarr:
+        image: lscr.io/linuxserver/radarr:latest
+        container_name: radarr
+        ports:
+            - "7878:7878"  # Radarr Web UI at http://<YOUR_PC_IP>:7878
+        volumes:
+            - /change/to/path/to/your/configuration/storage/for/radarr:/config
+            - /path/to/your/hard/drive/BIG/storage/data:/data
+            - /path/to/your/hard/drive/BIG/storage/media:/media
+        environment:
+            - TZ=America/Denver
+            - PUID=1000
+            - PGID=1000
+        restart: unless-stopped
+
+    sonarr:
+        image: lscr.io/linuxserver/sonarr:latest
+        container_name: sonarr
+        ports:
+            - "8989:8989"  # Sonarr Web UI at http://<YOUR_PC_IP>:8989
+        volumes:
+            - /change/to/path/to/your/configuration/storage/for/sonarr:/config
+            - /path/to/your/hard/drive/BIG/storage/data:/data
+            - /path/to/your/hard/drive/BIG/storage/media:/media
+        environment:
+            - TZ=America/Denver
+            - PUID=1000
+            - PGID=1000
+        restart: unless-stopped
+
+    prowlarr:
+        image: lscr.io/linuxserver/prowlarr:latest
+        container_name: prowlarr
+        ports:
+            - "9696:9696"  # Prowlarr Web UI at http://<YOUR_PC_IP>:9696
+        volumes:
+            - /change/to/path/to/your/configuration/storage/for/prowlarr:/config
+            - /path/to/your/hard/drive/BIG/storage/data:/data
+            - /path/to/your/hard/drive/BIG/storage/media:/media
+        environment:
+            - TZ=America/Denver
+            - PUID=1000
+            - PGID=1000
+        restart: unless-stopped
+
+    flaresolverr:
+        image: ghcr.io/flaresolverr/flaresolverr:latest
+        container_name: flaresolverr
+        environment:
+            - LOG_LEVEL=info
+            - TZ=America/Denver
+        restart: unless-stopped
+
+    overseerr:
+        image: ghcr.io/seerr-team/seerr:latest
+        init: true
+        container_name: overseerr
+        ports:
+            - "5055:5055"  # Overseerr Web UI at http://<YOUR_PC_IP>:5055
+        volumes:
+            - /change/to/path/to/your/configuration/storage/for/overseerr:/app/config
+        environment:
+            - PORT=5055
+            - LOG_LEVEL=debug
+            - TZ=America/Denver
+            - PUID=1000
+            - PGID=1000
+        restart: unless-stopped

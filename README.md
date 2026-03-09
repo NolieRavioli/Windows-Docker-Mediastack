@@ -63,6 +63,8 @@ Follow the [Docker Desktop Installation wiki page](https://github.com/NolieRavio
 
 Download [`docker-compose.qbittorrent-only.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.qbittorrent-only.yml) from this repo and follow the [Docker Compose Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#qbittorrent-only-stack) to edit your paths, timezone, and VPN credentials.
 
+If you use WireGuard with ProtonVPN on the current `binhex/arch-qbittorrentvpn` image, also download a Proton WireGuard `.conf` file and place it under your qBittorrent config folder's `wireguard` subdirectory.
+
 ### Configure qBittorrent
 
 Once the container is running, follow the [qBittorrentVPN Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration) to:
@@ -80,6 +82,8 @@ Once the container is running, follow the [qBittorrentVPN Configuration wiki pag
 ### Download & Configure the Compose File
 
 Download [`docker-compose.full-stack.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.full-stack.yml) and follow the [Full Stack section of the Docker Compose Configuration wiki](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#full-stack) to edit paths, timezone, VPN credentials, and NZBGet login.
+
+If you use WireGuard with ProtonVPN on the current `binhex/arch-qbittorrentvpn` image, also add a Proton WireGuard `.conf` file under the qBittorrent config folder's `wireguard` subdirectory.
 
 ### Configure Each App
 

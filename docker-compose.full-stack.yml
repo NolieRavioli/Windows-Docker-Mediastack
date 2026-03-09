@@ -6,7 +6,7 @@ services:
             - "6789:6789"  # NZBGet Web UI (tunneled through qBittorrent's VPN network)
             - "8113:8113"  # qBittorrent Web UI accessible at http://<YOUR_PC_IP>:8113
         volumes:
-            - /change/to/path/to/your/configuration/storage/for/qbittorent:/config
+            - ./config/qbittorent:/config
             - /path/to/your/hard/drive/BIG/storage/data:/data
         logging:
             driver: "json-file"
@@ -61,7 +61,7 @@ services:
             qbittorrent:
                 condition: service_healthy
         volumes:
-            - /change/to/path/to/your/configuration/storage/for/nzbget:/config
+            - ./config/nzbget:/config
             - /path/to/your/hard/drive/BIG/storage/data:/data
             - /path/to/your/hard/drive/BIG/storage/media:/media
         environment:
@@ -78,7 +78,7 @@ services:
         ports:
             - "7878:7878"  # Radarr Web UI at http://<YOUR_PC_IP>:7878
         volumes:
-            - /change/to/path/to/your/configuration/storage/for/radarr:/config
+            - ./config/radarr:/config
             - /path/to/your/hard/drive/BIG/storage/data:/data
             - /path/to/your/hard/drive/BIG/storage/media:/media
         environment:
@@ -93,7 +93,7 @@ services:
         ports:
             - "8989:8989"  # Sonarr Web UI at http://<YOUR_PC_IP>:8989
         volumes:
-            - /change/to/path/to/your/configuration/storage/for/sonarr:/config
+            - ./config/sonarr:/config
             - /path/to/your/hard/drive/BIG/storage/data:/data
             - /path/to/your/hard/drive/BIG/storage/media:/media
         environment:
@@ -108,7 +108,7 @@ services:
         ports:
             - "9696:9696"  # Prowlarr Web UI at http://<YOUR_PC_IP>:9696
         volumes:
-            - /change/to/path/to/your/configuration/storage/for/prowlarr:/config
+            - ./config/prowlarr:/config
             - /path/to/your/hard/drive/BIG/storage/data:/data
             - /path/to/your/hard/drive/BIG/storage/media:/media
         environment:
@@ -132,7 +132,7 @@ services:
         ports:
             - "5055:5055"  # Seerr Web UI at http://<YOUR_PC_IP>:5055
         volumes:
-            - /change/to/path/to/your/configuration/storage/for/seerr:/app/config
+            - ./config/seerr:/app/config
         environment:
             - PORT=5055
             - LOG_LEVEL=debug

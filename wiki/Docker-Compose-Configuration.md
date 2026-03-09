@@ -7,59 +7,74 @@ Download the compose file, replace the placeholders, create the shared folder la
 ## Before You Start
 
 - Use `docker compose`, not `docker-compose`.
-- Use PowerShell or Windows Terminal, not Portainer, for starting and stopping the stack.
-- If you are building the full stack, create the folder tree first so qBittorrent, Radarr, and Sonarr all work from the same shared `/data` mount.
+- Use PowerShell or Command Prompt, not Portainer, for starting and stopping the stack.
+
+### Step 1 - Download the Whole Repository and Compose File
+
+1. Download [Windows-Docker-Mediastack](https://github.com/NolieRavioli/Windows-Docker-Mediastack/tree/main) from Github by pressing the green `<> Code` button.  
+  ![github-repo-code.png](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/pics/github-repo-code.png)  
+
+2. Click **Download ZIP** and extract the zip file. The extraction location should be where you want the program to run (likely `C:/Users/<<name>>/Windows-Docker-Mediastack/`)  
+  ![github-zip.png](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/pics/github-zip.png)
+
 
 ## qBittorrent-Only Stack
 
-### Step 1 - Download the Compose File
-
-1. Open [docker-compose.qbittorrent-only.yml](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.qbittorrent-only.yml).
-2. Click **Raw** and save it as `docker-compose.yml` in a folder such as:
-
-```text
-C:\Users\YourName\docker\qbittorrent-only\
-```
-
 ### Step 2 - Replace the Placeholders
 
-Open the file in VS Code or Notepad++ and replace these values:
+1. In **Docker Desktop**, open the **Terminal**  
 
-| Find | Replace with | Example |
-| --- | --- | --- |
-| `/change/to/path/to/your/configuration/storage/for/` | Your config root on the fast drive | `/mnt/c/Users/YourName/docker/` |
-| `/path/to/your/hard/drive/BIG/storage/` | Your media/download root on the large drive | `/mnt/d/MediaStack/` |
-| `America/Denver` | Your timezone | `America/New_York` |
-| `192.168.1.0/24` | Your LAN subnet | `192.168.0.0/24` |
+    'Change Directory' to your extraction location (likely `C:/Users/<<name>>/Windows-Docker-Mediastack/`)
+      ```powershell
+      cd 'C:/Users/<<name>>/Windows-Docker-Mediastack/'
+      ```
+    
+    Rename [`docker-compose.qbittorrent-only.yml`](../docker-compose.qbittorrent-only.yml) to `docker-compose.yml`
+      ```powershell
+      mv ./docker-compose.qbittorrent-only.yml ./docker-compose.yml
+      ```
 
-Windows drive letters become WSL-style paths inside Docker Desktop:
+2. Open the file in VS Code or Notepad and replace these values:
+    | Find | Replace with | Example |
+    | --- | --- | --- |
+    | `/path/to/your/hard/drive/BIG/storage/` | Your media/download root on the large drive | `D:/MediaStack/` |
+    | `America/Denver` | Your timezone | `America/New_York` |
+    | `192.168.1.0/24` | Your LAN subnet | `192.168.0.0/24` |
+    | `VPN_USER=<<<YOUR_PROTONVPN_USERNAME>>>+pmp` | Your VPN Username (Different than Proton username) ||
+    | `VPN_PASS=<<<YOUR_PROTONVPN_VPN_PASSWORD>>>` | Your VPN Password (Different than Proton username) ||
 
-- `C:\` -> `/mnt/c/`
-- `D:\` -> `/mnt/d/`
+    > Go to [account.protonvpn.com](https://account.protonvpn.com/dashboardV2) to get your `VPN_USER` and `VPN_PASS`:  
+    > ![proton-vpn-creds.png](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/pics/proton-vpn-creds.png)
 
-### Step 3 - Create the qBittorrent Download Folders
+### Step 3 - Download and Install ProtonVPN Wireguard Configuration  
 
-If you want the same category layout used later by Radarr and Sonarr, create these folders on the large drive before you start the container:
+1. Go to [account.protonvpn.com](https://account.protonvpn.com/dashboardV2) to download the config file you need for the VPN  
+  ![proton-wg-conf.png](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/pics/proton-wg-conf.png)  
 
-```powershell
-$root = "D:\MediaStack\data\torrents"
-New-Item -ItemType Directory -Force -Path `
-  "$root\movies", `
-  "$root\tv", `
-  "$root\music"
-```
+2. Find the downloaded file (likely `C:/Users/<<name>>/Downloads/*.conf`)
 
-### Step 4 - Set Your ProtonVPN Credentials
+3. Open **Docker Desktop** and the **Terminal**. Move and rename the downloaded `.conf` file to `wg0.conf`
+    - Go to the `docker-compose.yml` directory (likely at `C:/Users/<<name>>/Windows-Docker-Mediastack/`)
+      ```powershell
+      cd 'C:/Users/<<name>>/Windows-Docker-Mediastack/'
+      ```
+    - Move the `*.conf` to `./config/qbittorrent/wireguard/wg0.conf`
+    ```powershell
+    mv '<<config>>.conf` to `./config/qbittorrent/wireguard/wg0.conf`
+    ```
 
-Find these lines:
+### Step 4 - Create the qBittorrent Download Folders
 
-```yaml
-- VPN_USER=<<<YOUR_PROTONVPN_USERNAME>>>+pmp
-- VPN_PASS=<<<YOUR_PROTONVPN_VPN_PASSWORD>>>
-```
-
-- `VPN_USER` is your ProtonVPN username with `+pmp` appended.
-- `VPN_PASS` is your ProtonVPN VPN password, not your account password.
+- If you want the same category layout used later by Radarr and Sonarr, create these folders on the large drive before you start the container:
+    ```powershell
+    $root = "D:\MediaStack\data\torrents"
+    ```
+    ```powershell
+    New-Item -ItemType Directory -Force -Path `
+      "$root\movies", `
+      "$root\tv", `
+      "$root\music"
+    ```
 
 ### Step 5 - WireGuard vs OpenVPN
 
@@ -89,7 +104,7 @@ devices:
 ### Step 6 - Start the Stack
 
 ```powershell
-cd C:\Users\YourName\docker\qbittorrent-only
+cd C:\Users\<<name>>\docker\qbittorrent-only
 docker compose up -d
 docker compose ps
 ```
@@ -104,7 +119,7 @@ qBittorrent will be available at `http://localhost:8113`.
 2. Click **Raw** and save it as `docker-compose.yml` in a folder such as:
 
 ```text
-C:\Users\YourName\docker\full-stack\
+C:\Users\<<name>>\docker\full-stack\
 ```
 
 ### Step 2 - Create the Shared Folder Layout
@@ -150,11 +165,11 @@ New-Item -ItemType Directory -Force -Path `
 
 ### Step 3 - Replace the Placeholders
 
-Open the file in VS Code or Notepad++ and replace these values:
+Open the file in VS Code or Notepad and replace these values:
 
 | Find | Replace with | Example |
 | --- | --- | --- |
-| `/change/to/path/to/your/configuration/storage/for/` | Your config root on the fast drive | `/mnt/c/Users/YourName/docker/` |
+| `./config/` | Your config root on the fast drive | `/mnt/c/Users/YourName/docker/` |
 | `/path/to/your/hard/drive/BIG/storage/` | Your storage root on the large drive | `/mnt/d/MediaStack/` |
 | `America/Denver` | Your timezone | `America/New_York` |
 | `192.168.1.0/24` | Your LAN subnet | `192.168.0.0/24` |
@@ -174,6 +189,26 @@ Find these lines:
 ```
 
 Set them the same way as the qBittorrent-only stack.
+
+### Step 4.1 - WireGuard Requires a Proton Config File
+
+For the current `binhex/arch-qbittorrentvpn` image, ProtonVPN WireGuard does not come up from `VPN_USER` and `VPN_PASS` alone.
+
+You also need to download a Proton WireGuard `.conf` file and place it in the host folder that maps to `/config/wireguard` inside the qBittorrent container.
+
+With the example full-stack layout, create:
+
+```text
+C:\Users\YourName\docker\full-stack\config\qbittorrent\wireguard\
+```
+
+and put a config file there, for example:
+
+```text
+C:\Users\YourName\docker\full-stack\config\qbittorrent\wireguard\wg0.conf
+```
+
+If your qBittorrent config path is elsewhere, create the `wireguard` subfolder under that path instead.
 
 ### Step 5 - Set NZBGet Credentials
 

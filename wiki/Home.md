@@ -18,8 +18,8 @@ Use these pages in order. The Docker/Windows setup is specific to this repo, whi
 
 ## Notes
 
+- You will have to choose a primary media drive letter if you decide to run the full stack.
 - Use `docker compose`, not the old `docker-compose` binary.
-- Use the CLI, not Portainer, for starting and stopping this stack.
 - If you open the web UIs from another device on your network, replace `localhost` with your Windows PC's IP address.
 
 ## Questions

@@ -14,7 +14,15 @@ Open:
 Default login for this image:
 
 - Username: `admin`
-- Password: `adminadmin`
+- Password: randomly generated and written to `/config/supervisord.log`
+
+If you are using the example host layout from this repo, check the password in:
+
+```text
+C:\Users\YourName\docker\...\config\qbittorrent\supervisord.log
+```
+
+If the container never becomes healthy and the logs say no WireGuard config was found in `/config/wireguard/`, stop here and add the Proton WireGuard `.conf` file first. The current `binhex/arch-qbittorrentvpn` image needs that file for Proton WireGuard.
 
 ## Step 2 - Change the Web UI Login
 
@@ -78,6 +86,7 @@ If you are running the full stack:
 
 - Run `docker compose logs qbittorrent`.
 - Wrong ProtonVPN credentials and missing `+pmp` on `VPN_USER` are the most common causes.
+- If the logs say no config exists in `/config/wireguard/`, create a host folder named `wireguard` under your qBittorrent config path and place your Proton `.conf` file there as `wg0.conf`.
 
 **WireGuard permission errors**
 

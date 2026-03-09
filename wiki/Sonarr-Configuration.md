@@ -2,7 +2,7 @@
 
 > Sonarr monitors and automatically downloads TV shows.
 
-**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Radarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[➡️ Overseerr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[➡️ Overseerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)**
 
 ---
 
@@ -50,7 +50,7 @@
 
 ## Step 4 — Configure Quality Profiles
 
-> Pre-made quality and custom format profiles will be available to import — check the [repo releases](/NolieRavioli/Windows-Docker-Mediastack/releases) for configuration files.
+> Pre-made quality and custom format profiles will be available to import — check the [repo releases](https://github.com/NolieRavioli/Windows-Docker-Mediastack/releases) for configuration files.
 
 For now:
 1. Go to **Settings → Profiles**.
@@ -84,4 +84,4 @@ For now:
 
 ---
 
-**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Radarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[➡️ Overseerr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[➡️ Overseerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)**

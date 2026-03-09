@@ -33,7 +33,7 @@ This repo has two options:
 
 ## Step 1 — Install Docker Desktop
 
-Follow the [Docker Desktop Installation wiki page](/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Desktop-Installation) for step-by-step instructions on getting Docker running on Windows 11 with WSL2.
+Follow the [Docker Desktop Installation wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Desktop-Installation) for step-by-step instructions on getting Docker running on Windows 11 with WSL2.
 
 ---
 
@@ -41,11 +41,11 @@ Follow the [Docker Desktop Installation wiki page](/NolieRavioli/Windows-Docker-
 
 ### Download & Configure the Compose File
 
-Download [`docker-compose.qbittorrent-only.yml`](/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.qbittorrent-only.yml) from this repo and follow the [Docker Compose Configuration wiki page](/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#-qbittorrent-only-stack) to edit your paths, timezone, and VPN credentials.
+Download [`docker-compose.qbittorrent-only.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.qbittorrent-only.yml) from this repo and follow the [Docker Compose Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#-qbittorrent-only-stack) to edit your paths, timezone, and VPN credentials.
 
 ### Configure qBittorrent
 
-Once the container is running, follow the [qBittorrentVPN Configuration wiki page](/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration#-qbittorrent-only-stack) to:
+Once the container is running, follow the [qBittorrentVPN Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration#-qbittorrent-only-stack) to:
 
 - Change the default admin password
 - Verify the VPN is active
@@ -60,18 +60,18 @@ Once the container is running, follow the [qBittorrentVPN Configuration wiki pag
 
 ### Download & Configure the Compose File
 
-Download [`docker-compose.full-stack.yml`](/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.full-stack.yml) and follow the [Full Stack section of the Docker Compose Configuration wiki](/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#-full-stack) to edit paths, timezone, VPN credentials, and NZBGet login.
+Download [`docker-compose.full-stack.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.full-stack.yml) and follow the [Full Stack section of the Docker Compose Configuration wiki](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#-full-stack) to edit paths, timezone, VPN credentials, and NZBGet login.
 
 ### Configure Each App
 
 After running `docker compose up -d`, configure each app in order. Each one has a dedicated wiki page:
 
-1. **[qBittorrentVPN Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)** — Verify VPN, set download folders, configure ProtonVPN port forwarding
-2. **[NZBGet Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)** — Add your Usenet news server credentials
-3. **[Prowlarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** — Add indexers and connect to Radarr/Sonarr
-4. **[Radarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** — Set download client, root folder, quality profiles
-5. **[Sonarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)** — Same as Radarr but for TV shows
-6. **[Overseerr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)** — Connect to Plex, Radarr, and Sonarr; invite users
+1. **[qBittorrentVPN Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)** — Verify VPN, set download folders, configure ProtonVPN port forwarding
+2. **[NZBGet Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)** — Add your Usenet news server credentials
+3. **[Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** — Add indexers and connect to Radarr/Sonarr
+4. **[Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** — Set download client, root folder, quality profiles
+5. **[Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)** — Same as Radarr but for TV shows
+6. **[Overseerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)** — Connect to Plex, Radarr, and Sonarr; invite users
 
 ### Full Stack URLs (once running)
 
@@ -88,4 +88,4 @@ After running `docker compose up -d`, configure each app in order. Each one has 
 
 ## 💬 Questions?
 
-Use the [Discussions](/NolieRavioli/Windows-Docker-Mediastack/discussions/q-a) tab. There's a **Questions** category — ask anything there.
+Use the [Discussions](https://github.com/NolieRavioli/Windows-Docker-Mediastack/discussions/q-a) tab. There's a **Questions** category — ask anything there.

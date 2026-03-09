@@ -6,7 +6,7 @@ Pick your setup:
 - [qBittorrent-Only Stack](#-qbittorrent-only-stack)
 - [Full Stack](#-full-stack)
 
-**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Docker Desktop Installation](/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Desktop-Installation)** | **[➡️ qBittorrentVPN Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Docker Desktop Installation](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Desktop-Installation)** | **[➡️ qBittorrentVPN Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)**
 
 ---
 
@@ -14,7 +14,7 @@ Pick your setup:
 
 ### Step 1 — Download the Compose File
 
-1. Go to the repo's [docker-compose.qbittorrent-only.yml](/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.qbittorrent-only.yml).
+1. Go to the repo's [docker-compose.qbittorrent-only.yml](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.qbittorrent-only.yml).
 2. Click the **Download raw file** button (or right-click Raw → Save As).
 3. Save it somewhere easy to find, for example:
    ```
@@ -128,7 +128,7 @@ To open the qBittorrent UI, you'd visit: `http://localhost:8113` or `http://<YOU
 
 ### Step 1 — Download the Compose File
 
-1. Go to the repo's [docker-compose.full-stack.yml](/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.full-stack.yml).
+1. Go to the repo's [docker-compose.full-stack.yml](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.full-stack.yml).
 2. Click **Download raw file**.
 3. Save it as `docker-compose.yml` in a folder on your PC.
 
@@ -201,4 +201,4 @@ The first time you run it, Docker will download all the images — this may take
 
 ---
 
-**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Docker Desktop Installation](/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Desktop-Installation)** | **[➡️ qBittorrentVPN Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Docker Desktop Installation](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Desktop-Installation)** | **[➡️ qBittorrentVPN Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)**

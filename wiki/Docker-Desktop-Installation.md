@@ -85,8 +85,7 @@ The most recent version of Windows Subsystem for Linux is already installed.
 2. Accept the license agreement when prompted.  
 
 3. Skip the tutorial/sign-in — you don't need a Docker account to use this.  
-   ![docker-desk-login-skip.png](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/pics/docker-desk-login-skip.png)  
-
+   ![docker-desk-login-skip.png](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/pics/docker-desk-login-skip.png)
 4. Find and enable the integrated terminal in Docker Desktop.  
    ![docker-desk-terminal-button.png](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/pics/docker-desk-terminal-button.png)
    ![docker-desk-terminal-enable.png](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/pics/docker-desk-terminal-enable.png)

@@ -5,7 +5,7 @@ Use these pages in order. The Docker/Windows setup is specific to this repo, whi
 ## Setup Order
 
 1. **[Docker Desktop Installation](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Desktop-Installation)** - Install Docker Desktop and WSL2 on Windows 11.
-2. **[Docker Compose Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration)** - Download the compose file, create the folder structure, and launch the stack.
+2. **[Docker Compose Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration)** - Extract the repo, copy the stack template you want to `docker-compose.yml`, create the folder structure, and launch the stack.
 3. **[qBittorrentVPN Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)** - Change the default login, verify the VPN, and create the categories used by the Arr apps.
 
 ### Full Stack

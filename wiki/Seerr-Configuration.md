@@ -2,7 +2,7 @@
 
 Seerr is the request UI that sits on top of Radarr and Sonarr. Users request content there, then the Arr apps do the actual searching and importing.
 
-**[Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
 
 ## Step 1 - Open Seerr
 
@@ -44,4 +44,4 @@ Complete the wizard, then submit a test request and confirm it appears in Radarr
 
 Use the same root folders here that you used in Radarr and Sonarr. In this repo's updated wiki flow, that means `/data/media/...`, not `/media/...`.
 
-**[Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**

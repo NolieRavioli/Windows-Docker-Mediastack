@@ -29,6 +29,8 @@ This repo has two options:
 | **qBittorrent-Only** | qBittorrent behind a ProtonVPN WireGuard tunnel |
 | **Full Stack** | Everything above + NZBGet, Prowlarr, Radarr, Sonarr, Overseerr, FlareSolverr |
 
+Use the [Wiki](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/) to follow step-by-step instructions for installation
+
 ---
 
 ## Step 1 — Install Docker Desktop

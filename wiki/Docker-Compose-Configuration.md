@@ -171,7 +171,7 @@ These are credentials **you choose** — NZBGet will require this login when you
 
 Same as the qBittorrent-only instructions — see [WireGuard vs OpenVPN](#step-4--wireguard-vs-openvpn).
 
-Note: In the full stack, NZBGet shares the VPN container's network (`network_mode: "service:qtorrent"`), so its UI port (`6789`) is also exposed through the qBittorrent container. You don't need to do anything extra — it's already wired up.
+Note: In the full stack, NZBGet shares the VPN container's network (`network_mode: "service:qbittorent"`), so its UI port (`6789`) is also exposed through the qBittorrent container. You don't need to do anything extra — it's already wired up.
 
 ---
 

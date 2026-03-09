@@ -21,7 +21,7 @@
 
 **For qBittorrent:**
 - Select **qBittorrent**
-- Host: `localhost`
+- Host: `qtorrent`
 - Port: `8113`
 - Username: your qBittorrent username
 - Password: your qBittorrent password
@@ -30,7 +30,7 @@
 
 **For NZBGet:**
 - Select **NZBGet**
-- Host: `localhost`
+- Host: `qtorrent`
 - Port: `6789`
 - Username: your NZBGet username
 - Password: your NZBGet password

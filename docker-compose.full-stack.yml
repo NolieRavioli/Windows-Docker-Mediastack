@@ -56,9 +56,9 @@ services:
     nzbget:
         image: lscr.io/linuxserver/nzbget:latest
         container_name: nzbget
-        network_mode: "service:qtorrent"
+        network_mode: "service:qbittorrent"
         depends_on:
-            qtorrent:
+            qbittorrent:
                 condition: service_healthy
         volumes:
             - /change/to/path/to/your/configuration/storage/for/nzbget:/config

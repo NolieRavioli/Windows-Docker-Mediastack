@@ -6,7 +6,7 @@ Pick your setup:
 - [qBittorrent-Only Stack](#-qbittorrent-only-stack)
 - [Full Stack](#-full-stack-additional-steps)
 
-**[🏠 Home](../)**  **[⬅️ Docker Compose Configuration](Docker-Compose-Configuration)**  **[➡️ NZBGet Configuration](NZBGet-Configuration)**
+**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Docker Compose Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration)** | **[➡️ NZBGet Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)**
 
 ---
 
@@ -120,4 +120,4 @@ Categories tell qBittorrent (and the Arr apps later) where to save specific type
 
 ---
 
-**[🏠 Home](../)**  **[⬅️ Docker Compose Configuration](Docker-Compose-Configuration)**  **[➡️ NZBGet Configuration](NZBGet-Configuration)**
+**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Docker Compose Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration)** | **[➡️ NZBGet Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)**

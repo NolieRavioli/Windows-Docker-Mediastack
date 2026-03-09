@@ -2,7 +2,7 @@
 
 > Prowlarr is your indexer manager — it connects to torrent and Usenet indexer sites and pushes them to Radarr/Sonarr automatically.
 
-**[🏠 Home](../)**  **[⬅️ NZBGet Configuration](NZBGet-Configuration)**  **[➡️ Radarr Configuration](Radarr-Configuration)**
+**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ NZBGet Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)** | **[➡️ Radarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)**
 
 ---
 
@@ -79,4 +79,4 @@ If any of your indexers are blocked by Cloudflare, FlareSolverr handles that aut
 
 ---
 
-**[🏠 Home](../)**  **[⬅️ NZBGet Configuration](NZBGet-Configuration)**  **[➡️ Radarr Configuration](Radarr-Configuration)**
+**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ NZBGet Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)** | **[➡️ Radarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)**

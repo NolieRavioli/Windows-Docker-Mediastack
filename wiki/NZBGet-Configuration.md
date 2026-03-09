@@ -2,7 +2,7 @@
 
 > Step-by-step first-time setup for NZBGet (Usenet downloader).
 
-**[🏠 Home](../)**  **[⬅️ qBittorrentVPN Configuration](qBittorrentVPN-Configuration)**  **[➡️ Prowlarr Configuration](Prowlarr-Configuration)**
+**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ qBittorrentVPN Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)** | **[➡️ Prowlarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)**
 
 ---
 
@@ -64,4 +64,4 @@ Radarr, Sonarr, and Prowlarr will need to talk to NZBGet. They use a simple user
 
 ---
 
-**[🏠 Home](../)**  **[⬅️ qBittorrentVPN Configuration](qBittorrentVPN-Configuration)**  **[➡️ Prowlarr Configuration](Prowlarr-Configuration)**
+**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ qBittorrentVPN Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)** | **[➡️ Prowlarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)**

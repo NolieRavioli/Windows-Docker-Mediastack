@@ -2,7 +2,7 @@
 
 > Step-by-step. No theory — just do it.
 
-**[🏠 Home](../)**  **[➡️ Docker Compose Configuration](Docker-Compose-Configuration)**
+**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[➡️ Docker Compose Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration)**
 
 ---
 
@@ -89,4 +89,4 @@
 
 ---
 
-**[🏠 Home](../)**  **[➡️ Docker Compose Configuration](Docker-Compose-Configuration)**
+**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[➡️ Docker Compose Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration)**

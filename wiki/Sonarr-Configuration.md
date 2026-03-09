@@ -2,6 +2,8 @@
 
 > Sonarr monitors and automatically downloads TV shows.
 
+**[🏠 Home](../)**  **[⬅️ Radarr Configuration](Radarr-Configuration)**  **[➡️ Overseerr Configuration](Overseerr-Configuration)**
+
 ---
 
 ## Step 1 — Open Sonarr
@@ -82,6 +84,4 @@ For now:
 
 ---
 
-## Next Step
-
-➡️ **[Overseerr Configuration](Overseerr-Configuration)**
+**[🏠 Home](../)**  **[⬅️ Radarr Configuration](Radarr-Configuration)**  **[➡️ Overseerr Configuration](Overseerr-Configuration)**

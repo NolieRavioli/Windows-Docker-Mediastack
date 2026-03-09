@@ -6,6 +6,8 @@ Pick your setup:
 - [qBittorrent-Only Stack](#-qbittorrent-only-stack)
 - [Full Stack](#-full-stack-additional-steps)
 
+**[🏠 Home](../)**  **[⬅️ Docker Compose Configuration](Docker-Compose-Configuration)**  **[➡️ NZBGet Configuration](NZBGet-Configuration)**
+
 ---
 
 ## 🧲 qBittorrent-Only Stack
@@ -118,6 +120,4 @@ Categories tell qBittorrent (and the Arr apps later) where to save specific type
 
 ---
 
-## Next Step (Full Stack)
-
-➡️ **[NZBGet Configuration](NZBGet-Configuration)**
+**[🏠 Home](../)**  **[⬅️ Docker Compose Configuration](Docker-Compose-Configuration)**  **[➡️ NZBGet Configuration](NZBGet-Configuration)**

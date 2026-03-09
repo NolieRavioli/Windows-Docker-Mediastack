@@ -2,6 +2,8 @@
 
 > Radarr monitors and automatically downloads movies.
 
+**[🏠 Home](../)**  **[⬅️ Prowlarr Configuration](Prowlarr-Configuration)**  **[➡️ Sonarr Configuration](Sonarr-Configuration)**
+
 ---
 
 ## Step 1 — Open Radarr
@@ -83,6 +85,4 @@ For now:
 
 ---
 
-## Next Step
-
-➡️ **[Sonarr Configuration](Sonarr-Configuration)**
+**[🏠 Home](../)**  **[⬅️ Prowlarr Configuration](Prowlarr-Configuration)**  **[➡️ Sonarr Configuration](Sonarr-Configuration)**

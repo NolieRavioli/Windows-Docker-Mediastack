@@ -6,6 +6,8 @@ Pick your setup:
 - [qBittorrent-Only Stack](#-qbittorrent-only-stack)
 - [Full Stack](#-full-stack)
 
+**[🏠 Home](../)**  **[⬅️ Docker Desktop Installation](Docker-Desktop-Installation)**  **[➡️ qBittorrentVPN Configuration](qBittorrentVPN-Configuration)**
+
 ---
 
 ## 🧲 qBittorrent-Only Stack
@@ -199,6 +201,4 @@ The first time you run it, Docker will download all the images — this may take
 
 ---
 
-## Next Step
-
-➡️ **[qBittorrentVPN Configuration](qBittorrentVPN-Configuration)**
+**[🏠 Home](../)**  **[⬅️ Docker Desktop Installation](Docker-Desktop-Installation)**  **[➡️ qBittorrentVPN Configuration](qBittorrentVPN-Configuration)**

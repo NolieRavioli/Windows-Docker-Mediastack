@@ -2,6 +2,8 @@
 
 > Overseerr is the user-facing request interface — think of it like your own personal Netflix request app. Users can browse and request movies/shows, and Radarr/Sonarr handle the rest automatically.
 
+**[🏠 Home](../)**  **[⬅️ Sonarr Configuration](Sonarr-Configuration)**
+
 ---
 
 ## Step 1 — Open Overseerr
@@ -95,3 +97,7 @@ Your full media stack is now up and running. Here's a summary of all your UIs:
 ## Questions?
 
 Head to the [Discussions → Questions](../../discussions) tab.
+
+---
+
+**[🏠 Home](../)**  **[⬅️ Sonarr Configuration](Sonarr-Configuration)**

@@ -2,6 +2,8 @@
 
 > Step-by-step. No theory — just do it.
 
+**[🏠 Home](../)**  **[➡️ Docker Compose Configuration](Docker-Compose-Configuration)**
+
 ---
 
 ## Prerequisites
@@ -87,6 +89,4 @@
 
 ---
 
-## Next Step
-
-➡️ **[Docker Compose Configuration](Docker-Compose-Configuration)**
+**[🏠 Home](../)**  **[➡️ Docker Compose Configuration](Docker-Compose-Configuration)**

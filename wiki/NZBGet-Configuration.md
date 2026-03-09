@@ -2,6 +2,8 @@
 
 > Step-by-step first-time setup for NZBGet (Usenet downloader).
 
+**[🏠 Home](../)**  **[⬅️ qBittorrentVPN Configuration](qBittorrentVPN-Configuration)**  **[➡️ Prowlarr Configuration](Prowlarr-Configuration)**
+
 ---
 
 ## Step 1 — Open NZBGet
@@ -62,6 +64,4 @@ Radarr, Sonarr, and Prowlarr will need to talk to NZBGet. They use a simple user
 
 ---
 
-## Next Step
-
-➡️ **[Prowlarr Configuration](Prowlarr-Configuration)**
+**[🏠 Home](../)**  **[⬅️ qBittorrentVPN Configuration](qBittorrentVPN-Configuration)**  **[➡️ Prowlarr Configuration](Prowlarr-Configuration)**

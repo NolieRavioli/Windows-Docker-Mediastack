@@ -14,7 +14,7 @@ Use these pages in order. The Docker/Windows setup is specific to this repo, whi
 5. **[Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** - Add indexers and wire Prowlarr into the rest of the stack.
 6. **[Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** - Configure movie imports, hardlinks, and qBittorrent integration.
 7. **[Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)** - Configure TV imports, hardlinks, and qBittorrent integration.
-8. **[Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)** - Optional request UI for users.
+8. **[Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Seerr-Configuration)** - Optional request UI for users.
 
 ## Notes
 

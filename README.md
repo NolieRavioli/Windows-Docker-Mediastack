@@ -90,7 +90,7 @@ After running `docker compose up -d`, configure each app in order. Each one has 
 3. **[Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** — Add indexers and connect to Radarr/Sonarr
 4. **[Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** — Set download client, root folder, quality profiles
 5. **[Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)** — Same as Radarr but for TV shows
-6. **[Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)** — Connect to Plex, Radarr, and Sonarr; invite users
+6. **[Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Seerr-Configuration)** — Connect to Plex, Radarr, and Sonarr; invite users
 
 ### Full Stack URLs (once running)
 

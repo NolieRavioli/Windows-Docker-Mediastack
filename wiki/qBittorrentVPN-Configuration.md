@@ -38,7 +38,7 @@ Pick your setup:
 3. For a quick check, open a new browser tab and go to [https://ipleak.net](https://ipleak.net) — the IP address shown should **not** match your real home IP.
    > Make sure you're visiting the real ipleak.net and not a look-alike phishing site. The URL should start with `https://`.
 
-> If the VPN isn't connecting, check `docker compose logs qtorrent` in PowerShell for error messages.
+> If the VPN isn't connecting, check `docker compose logs qbittorent` in PowerShell for error messages.
 
 ---
 
@@ -60,7 +60,7 @@ ProtonVPN supports port forwarding on WireGuard servers (P2P servers). This give
 
 1. After the container has been running for a minute or two, check the logs:
    ```powershell
-   docker compose logs qtorrent | findstr "port"
+   docker compose logs qbittorent | findstr "port"
    ```
 2. Look for a line like: `Forwarded port: 12345`
 3. In the qBittorrent Web UI, go to **Tools → Options → Connection**.
@@ -109,7 +109,7 @@ Categories tell qBittorrent (and the Arr apps later) where to save specific type
 
 ## Troubleshooting
 
-**Container keeps restarting** — Run `docker compose logs qtorrent` and look for VPN errors. Most common causes:
+**Container keeps restarting** — Run `docker compose logs qbittorent` and look for VPN errors. Most common causes:
 - Wrong `VPN_USER` or `VPN_PASS`
 - Using your account password instead of the ProtonVPN VPN-specific password
 - Forgot to add `+pmp` to the username

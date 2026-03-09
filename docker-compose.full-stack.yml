@@ -1,12 +1,12 @@
 services:
     qbittorrent:
         image: binhex/arch-qbittorrentvpn:latest
-        container_name: qtorrent
+        container_name: qbittorent
         ports:
             - "6789:6789"  # NZBGet Web UI (tunneled through qBittorrent's VPN network)
             - "8113:8113"  # qBittorrent Web UI accessible at http://<YOUR_PC_IP>:8113
         volumes:
-            - /change/to/path/to/your/configuration/storage/for/qtorrent:/config
+            - /change/to/path/to/your/configuration/storage/for/qbittorent:/config
             - /path/to/your/hard/drive/BIG/storage/data:/data
         logging:
             driver: "json-file"

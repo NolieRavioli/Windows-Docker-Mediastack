@@ -2,7 +2,7 @@
 
 > Sonarr monitors and automatically downloads TV shows.
 
-**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[➡️ Overseerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[➡️ Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Seerr-Configuration)**
 
 ---
 
@@ -10,7 +10,7 @@
 
 1. Go to: `http://localhost:8989`
 2. Complete the first-launch setup wizard.
-3. Go to **Settings → General** and note your **API Key** — you'll need it for Prowlarr and Overseerr.
+3. Go to **Settings → General** and note your **API Key** — you'll need it for Prowlarr and Seerr.
 
 ---
 
@@ -71,7 +71,7 @@ For now:
 ## Step 6 — Copy the API Key
 
 1. Go to **Settings → General**.
-2. Copy the **API Key** — paste it into Prowlarr (if you haven't already) and Overseerr.
+2. Copy the **API Key** — paste it into Prowlarr (if you haven't already) and Seerr.
 
 ---
 
@@ -84,4 +84,4 @@ For now:
 
 ---
 
-**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[➡️ Overseerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** | **[➡️ Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Seerr-Configuration)**

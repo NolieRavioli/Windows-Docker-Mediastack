@@ -125,14 +125,14 @@ services:
             - TZ=America/Denver
         restart: unless-stopped
 
-    overseerr:
+    seerr:
         image: ghcr.io/seerr-team/seerr:latest
         init: true
-        container_name: overseerr
+        container_name: seerr
         ports:
-            - "5055:5055"  # Overseerr Web UI at http://<YOUR_PC_IP>:5055
+            - "5055:5055"  # Seerr Web UI at http://<YOUR_PC_IP>:5055
         volumes:
-            - /change/to/path/to/your/configuration/storage/for/overseerr:/app/config
+            - /change/to/path/to/your/configuration/storage/for/seerr:/app/config
         environment:
             - PORT=5055
             - LOG_LEVEL=debug

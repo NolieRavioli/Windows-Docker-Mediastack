@@ -1,12 +1,12 @@
-# Overseerr Configuration
+# Seerr Configuration
 
-> Overseerr is the user-facing request interface — think of it like your own personal Netflix request app. Users can browse and request movies/shows, and Radarr/Sonarr handle the rest automatically.
+> Seerr is the user-facing request interface — think of it like your own personal Netflix request app. Users can browse and request movies/shows, and Radarr/Sonarr handle the rest automatically.
 
 **[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
 
 ---
 
-## Step 1 — Open Overseerr
+## Step 1 — Open Seerr
 
 1. Go to: `http://localhost:5055`
 2. You'll land on the setup wizard — click **Get Started**.
@@ -15,9 +15,9 @@
 
 ## Step 2 — Sign In with Plex (or Set Up Local Login)
 
-Overseerr is designed to work with **Plex** as the media server. If you have Plex:
+Seerr is designed to work with **Plex** as the media server. If you have Plex:
 1. Click **Sign In with Plex**.
-2. Authorize Overseerr to access your Plex account.
+2. Authorize Seerr to access your Plex account.
 3. Select your Plex server from the list.
 4. Click **Save Changes**.
 
@@ -59,7 +59,7 @@ If you don't have Plex yet, you can skip this for now and set up a local admin a
 ## Step 5 — Finish Setup
 
 1. Click **Finish Setup**.
-2. Overseerr will scan your Plex library (if connected) and sync with Radarr/Sonarr.
+2. Seerr will scan your Plex library (if connected) and sync with Radarr/Sonarr.
 
 ---
 
@@ -73,7 +73,7 @@ If you don't have Plex yet, you can skip this for now and set up a local admin a
 
 ## Step 7 — Test a Request
 
-1. On the Overseerr home page, search for any movie or TV show.
+1. On the Seerr home page, search for any movie or TV show.
 2. Click **Request**.
 3. Check Radarr or Sonarr — the item should appear there automatically and begin searching.
 
@@ -90,7 +90,7 @@ Your full media stack is now up and running. Here's a summary of all your UIs:
 | Prowlarr | `http://localhost:9696` |
 | Radarr | `http://localhost:7878` |
 | Sonarr | `http://localhost:8989` |
-| Overseerr | `http://localhost:5055` |
+| Seerr | `http://localhost:5055` |
 
 ---
 

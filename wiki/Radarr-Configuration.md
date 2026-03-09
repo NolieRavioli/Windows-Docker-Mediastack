@@ -10,7 +10,7 @@
 
 1. Go to: `http://localhost:7878`
 2. On first launch, you'll walk through a short setup wizard. Complete it.
-3. Go to **Settings → General** and note your **API Key** — you'll need it for Prowlarr and Overseerr.
+3. Go to **Settings → General** and note your **API Key** — you'll need it for Prowlarr and Seerr.
 
 ---
 
@@ -71,7 +71,7 @@ For now:
 ## Step 6 — Copy the API Key
 
 1. Go to **Settings → General**.
-2. Copy the **API Key** — you'll paste it into Prowlarr (if you haven't already) and Overseerr.
+2. Copy the **API Key** — you'll paste it into Prowlarr (if you haven't already) and Seerr.
 
 ---
 

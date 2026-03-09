@@ -186,7 +186,7 @@ Each service has its own port:
 | Radarr | 7878 | `http://localhost:7878` |
 | Sonarr | 8989 | `http://localhost:8989` |
 | Prowlarr | 9696 | `http://localhost:9696` |
-| Overseerr | 5055 | `http://localhost:5055` |
+| Seerr | 5055 | `http://localhost:5055` |
 
 ---
 

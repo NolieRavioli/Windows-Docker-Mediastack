@@ -2,7 +2,7 @@
 
 > Radarr monitors and automatically downloads movies.
 
-**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Prowlarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** | **[➡️ Sonarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** | **[➡️ Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
 
 ---
 
@@ -50,7 +50,7 @@
 
 ## Step 4 — Configure Quality Profiles
 
-> Pre-made quality and custom format profiles will be available to import — check the [repo releases](/NolieRavioli/Windows-Docker-Mediastack/releases) for configuration files.
+> Pre-made quality and custom format profiles will be available to import — check the [repo releases](https://github.com/NolieRavioli/Windows-Docker-Mediastack/releases) for configuration files.
 
 For now:
 1. Go to **Settings → Profiles**.
@@ -85,4 +85,4 @@ For now:
 
 ---
 
-**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Prowlarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** | **[➡️ Sonarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** | **[➡️ Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**

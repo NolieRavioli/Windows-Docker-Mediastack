@@ -2,7 +2,7 @@
 
 > Overseerr is the user-facing request interface — think of it like your own personal Netflix request app. Users can browse and request movies/shows, and Radarr/Sonarr handle the rest automatically.
 
-**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Sonarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
 
 ---
 
@@ -96,8 +96,8 @@ Your full media stack is now up and running. Here's a summary of all your UIs:
 
 ## Questions?
 
-Head to the [Discussions → Questions](/NolieRavioli/Windows-Docker-Mediastack/discussions) tab.
+Head to the [Discussions → Questions](https://github.com/NolieRavioli/Windows-Docker-Mediastack/discussions) tab.
 
 ---
 
-**[🏠 Wiki Home](/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Sonarr Configuration](/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)**

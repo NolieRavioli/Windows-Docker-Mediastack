@@ -2,7 +2,7 @@
 
 Use these pages in order. The Docker/Windows setup is specific to this repo, while the app-side configuration below follows the same Arr workflow described in the transcript: shared folders, qBittorrent categories, and Radarr/Sonarr imports from the same `/data` tree.
 
-## Setup Order
+## 📋 Setup Order
 
 1. **[Docker Desktop Installation](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Desktop-Installation)** - Install Docker Desktop and WSL2 on Windows 11.
 2. **[Docker Compose Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration)** - Extract the repo, copy the stack template you want to `docker-compose.yml`, create the folder structure, and launch the stack.
@@ -22,6 +22,6 @@ Use these pages in order. The Docker/Windows setup is specific to this repo, whi
 - Use `docker compose`, not the old `docker-compose` binary.
 - If you open the web UIs from another device on your network, replace `localhost` with your Windows PC's IP address.
 
-## Questions
+## 💬 Questions?
 
 Use the [Discussions -> Questions](https://github.com/NolieRavioli/Windows-Docker-Mediastack/discussions) tab for help.

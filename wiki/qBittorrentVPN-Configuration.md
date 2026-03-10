@@ -1,123 +1,99 @@
 # qBittorrentVPN Configuration
 
-> Step-by-step configuration of qBittorrent after the containers are running.
-
-Pick your setup:
-- [qBittorrent-Only Stack](#-qbittorrent-only-stack)
-- [Full Stack](#-full-stack-additional-steps)
+These steps apply to both the qBittorrent-only stack and the full stack. The full stack depends on the category setup here, so do not skip the Downloads and Categories sections.
 
 **[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Docker Compose Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration)** | **[➡️ NZBGet Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)**
 
----
+## Step 1 - Open qBittorrent
 
-## 🧲 qBittorrent-Only Stack
+Open:
 
-### Step 1 — Open qBittorrent Web UI
+- `http://localhost:8113` from the Windows host
+- `http://<YOUR_PC_IP>:8113` from another device on your network
 
-1. Open a browser and go to: `http://localhost:8113`
-2. Default login:
-   - **Username:** `admin`
-   - **Password:** `adminadmin`
-   > Change this immediately after logging in (see Step 2).
+Default login for this image:
 
----
+- Username: `admin`
+- Password: randomly generated and written to `/config/supervisord.log`
 
-### Step 2 — Change the Admin Password
+If you are using the example host layout from this repo, check the password in:
 
-1. In the qBittorrent Web UI, click the **gear icon** (Tools → Options).
-2. Go to the **Web UI** tab.
-3. Under **Authentication**, change the username and password to something secure.
-4. Click **Save**.
+```text
+C:\Users\YourName\docker\...\config\qbittorrent\supervisord.log
+```
 
----
+If the container never becomes healthy and the logs say no WireGuard config was found in `/config/wireguard/`, stop here and add the Proton WireGuard `.conf` file first. The current `binhex/arch-qbittorrentvpn` image needs that file for Proton WireGuard.
 
-### Step 3 — Verify the VPN is Working
+## Step 2 - Change the Web UI Login
 
-1. In the Web UI, go to **Tools → Options → Advanced**.
-2. Look at the **Network Interface** — it should show something like `wg0` (WireGuard) or `tun0` (OpenVPN), not your regular network adapter.
-3. For a quick check, open a new browser tab and go to [https://ipleak.net](https://ipleak.net) — the IP address shown should **not** match your real home IP.
-   > Make sure you're visiting the real ipleak.net and not a look-alike phishing site. The URL should start with `https://`.
+1. Go to **Tools -> Options -> Web UI**.
+2. Change the username and password to something you will keep.
+3. Click **Save**.
 
-> If the VPN isn't connecting, check `docker compose logs qbittorent` in PowerShell for error messages.
+## Step 3 - Verify the VPN and Port Forwarding
 
----
+1. Go to **Tools -> Options -> Advanced**.
+2. Confirm the network interface is the VPN interface, not your normal adapter.
+3. In PowerShell, check the logs:
 
-### Step 4 — Configure Download Folders
+```powershell
+docker compose logs qbittorrent
+```
 
-1. In the Web UI, go to **Tools → Options → Downloads**.
-2. Set **Default Save Path** to `/data/complete`
-3. Check **"Keep incomplete torrents in:"** and set it to `/data/incomplete`
+If you are using ProtonVPN port forwarding, look for the forwarded port in the logs and set it under **Tools -> Options -> Connection**. Turn off UPnP/NAT-PMP inside qBittorrent after you set the forwarded port.
 
-> **Why?** The `/data` folder is mapped to your big storage drive. Keeping incomplete downloads in a separate folder prevents the Arr apps from trying to import a half-downloaded file.
+## Step 4 - Configure Downloads
 
-4. Click **Save**.
+Go to **Tools -> Options -> Downloads** and change these values:
 
----
+- **Default Torrent Management Mode:** `Automatic`
+- **Default Save Path:** `/data/torrents`
+- Enable **Use Subcategories**
+- Enable **Use Category Paths in Manual Mode** if your qBittorrent build shows it
 
-### Step 5 — Configure ProtonVPN Port Forwarding (WireGuard)
+Click **Save**.
 
-ProtonVPN supports port forwarding on WireGuard servers (P2P servers). This gives you an open port for better torrent speeds.
+Do not point qBittorrent at `/data/media`. Downloads should land in `/data/torrents/...` and then be imported by Radarr or Sonarr.
 
-1. After the container has been running for a minute or two, check the logs:
-   ```powershell
-   docker compose logs qbittorent | findstr "port"
-   ```
-2. Look for a line like: `Forwarded port: 12345`
-3. In the qBittorrent Web UI, go to **Tools → Options → Connection**.
-4. Set **Port used for incoming connections** to the forwarded port number from the logs.
-5. Uncheck **"Use UPnP / NAT-PMP port forwarding"** (the VPN handles this).
-6. Click **Save**.
+## Step 5 - Create Categories
 
----
+In the left sidebar, right-click **Categories** and add these:
 
-### Step 6 — Set Up Categories (Optional but Recommended)
+| Category | Save Path |
+| --- | --- |
+| `movies` | `movies` |
+| `tv` | `tv` |
+| `music` | `music` |
 
-Categories tell qBittorrent (and the Arr apps later) where to save specific types of downloads.
+The category names must exactly match what you put into Radarr and Sonarr later.
 
-1. Right-click in the left sidebar under **Categories**, click **Add category**.
-2. Add:
-   - Name: `movies` — Save Path: `/data/complete/movies`
-   - Name: `tv` — Save Path: `/data/complete/tv`
+## Step 6 - Full Stack Check
 
----
+If you are running the full stack:
 
-## 🎬 Full Stack (Additional Steps)
-
-> Complete all the steps above first, then continue here.
-
-### Step 7 — Verify NZBGet is Accessible
-
-1. Open `http://localhost:6789`
-2. Log in with the `NZBGET_USER` and `NZBGET_PASS` you set in the compose file.
-3. If it doesn't load, check the logs:
-   ```powershell
-   docker compose logs nzbget
-   ```
-   > Remember: NZBGet shares the VPN network with qBittorrent. If qBittorrent's VPN isn't up yet, NZBGet won't start either (it waits for the healthcheck to pass).
-
----
-
-### Step 8 — Configure NZBGet Download Paths
-
-1. In the NZBGet Web UI, go to **Settings → Paths**.
-2. Set **MainDir** to `/data/nzbget`
-3. Set **DestDir** to `/data/complete`
-4. Set **InterDir** to `/data/incomplete`
-5. Click **Save** and **Reload** when prompted.
-
----
+1. Confirm qBittorrent stays up and healthy.
+2. Confirm NZBGet is reachable at `http://localhost:6789`.
+3. Then move on to Prowlarr, Radarr, and Sonarr.
 
 ## Troubleshooting
 
-**Container keeps restarting** — Run `docker compose logs qbittorent` and look for VPN errors. Most common causes:
-- Wrong `VPN_USER` or `VPN_PASS`
-- Using your account password instead of the ProtonVPN VPN-specific password
-- Forgot to add `+pmp` to the username
+**Web UI does not load**
 
-**"Permission denied" errors on volumes** — Check that your folder paths in the compose file actually exist. Docker will not create them automatically.
+- Check `docker compose ps` and make sure `qbittorrent` is running.
+- Confirm `LAN_NETWORK` in the compose file matches your home subnet.
 
-**WireGuard: "RTNETLINK answers: Operation not permitted"** — Make sure `privileged: true` is set and not commented out.
+**Container keeps restarting**
 
----
+- Run `docker compose logs qbittorrent`.
+- Wrong ProtonVPN credentials and missing `+pmp` on `VPN_USER` are the most common causes.
+- If the logs say no config exists in `/config/wireguard/`, create a host folder named `wireguard` under your qBittorrent config path and place your Proton `.conf` file there as `wg0.conf`.
+
+**WireGuard permission errors**
+
+- Leave `privileged: true` enabled when using WireGuard.
+
+**Categories are missing later**
+
+- Create them before you configure Radarr and Sonarr.
 
 **[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Docker Compose Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration)** | **[➡️ NZBGet Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/NZBGet-Configuration)**

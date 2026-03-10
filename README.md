@@ -27,13 +27,31 @@ This repo has two options:
 | Setup | What's Included |
 |---|---|
 | **qBittorrent-Only** | qBittorrent behind a ProtonVPN WireGuard tunnel |
-| **Full Stack** | Everything above + NZBGet, Prowlarr, Radarr, Sonarr, Overseerr, FlareSolverr |
-
-Use the [Wiki](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/) to follow step-by-step instructions for installation
+| **Full Stack** | Everything above + NZBGet, Prowlarr, Radarr, Sonarr, Seerr, FlareSolverr |
 
 ---
 
-## Step 1 — Install Docker Desktop
+## What Each Container Does
+
+| Container | Included In | What It Does |
+|---|---|---|
+| **qBittorrentVPN** | qBittorrent-Only, Full Stack | Torrent download client running behind a ProtonVPN/WireGuard tunnel so torrent traffic stays inside the VPN container. |
+| **NZBGet** | Full Stack | Usenet download client for grabbing releases from your news server. In this stack it shares qBittorrent's VPN network. |
+| **Prowlarr** | Full Stack | Indexer manager that connects your torrent and Usenet indexers to Radarr and Sonarr from one place. |
+| **FlareSolverr** | Full Stack | Helper service used by Prowlarr for indexers protected by Cloudflare or similar anti-bot checks. |
+| **Radarr** | Full Stack | Movie automation app that watches for wanted movies, sends downloads to your client, and imports completed files. |
+| **Sonarr** | Full Stack | TV automation app that does the same job as Radarr, but for series and episodes. |
+| **Seerr** | Full Stack | Request interface for users to ask for movies and shows, then forward approved requests to Radarr and Sonarr. |
+
+---
+
+### **Use the **[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** to follow step-by-step instructions for installation**
+
+### **Use the [Discussions](https://github.com/NolieRavioli/Windows-Docker-Mediastack/discussions/q-a) tab. There's a **Questions** category — ask anything there.**
+
+---
+
+### Install Docker Desktop
 
 Follow the [Docker Desktop Installation wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Desktop-Installation) for step-by-step instructions on getting Docker running on Windows 11 with WSL2.
 
@@ -43,17 +61,18 @@ Follow the [Docker Desktop Installation wiki page](https://github.com/NolieRavio
 
 ### Download & Configure the Compose File
 
-Download [`docker-compose.qbittorrent-only.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.qbittorrent-only.yml) from this repo and follow the [Docker Compose Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#-qbittorrent-only-stack) to edit your paths, timezone, and VPN credentials.
+Download [`docker-compose.qbittorrent-only.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.qbittorrent-only.yml) from this repo and follow the [Docker Compose Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#qbittorrent-only-stack) to edit your paths, timezone, and VPN credentials.
+
+If you use WireGuard with ProtonVPN on the current `binhex/arch-qbittorrentvpn` image, also download a Proton WireGuard `.conf` file and place it under your qBittorrent config folder's `wireguard` subdirectory.
 
 ### Configure qBittorrent
 
-Once the container is running, follow the [qBittorrentVPN Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration#-qbittorrent-only-stack) to:
+Once the container is running, follow the [qBittorrentVPN Configuration wiki page](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration) to:
 
 - Change the default admin password
 - Verify the VPN is active
-- Set your download folders:
-  - **Incomplete downloads:** `/data/incomplete`
-  - **Completed downloads:** `/data/complete`
+- Set your download folders under the shared `/data/torrents` tree
+- Create the qBittorrent categories used later by Radarr and Sonarr
 - Configure ProtonVPN port forwarding for better speeds
 
 ---
@@ -62,7 +81,9 @@ Once the container is running, follow the [qBittorrentVPN Configuration wiki pag
 
 ### Download & Configure the Compose File
 
-Download [`docker-compose.full-stack.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.full-stack.yml) and follow the [Full Stack section of the Docker Compose Configuration wiki](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#-full-stack) to edit paths, timezone, VPN credentials, and NZBGet login.
+Download [`docker-compose.full-stack.yml`](https://github.com/NolieRavioli/Windows-Docker-Mediastack/blob/main/docker-compose.full-stack.yml) and follow the [Full Stack section of the Docker Compose Configuration wiki](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration#full-stack) to edit paths, timezone, VPN credentials, and NZBGet login.
+
+If you use WireGuard with ProtonVPN on the current `binhex/arch-qbittorrentvpn` image, also add a Proton WireGuard `.conf` file under the qBittorrent config folder's `wireguard` subdirectory.
 
 ### Configure Each App
 
@@ -73,7 +94,7 @@ After running `docker compose up -d`, configure each app in order. Each one has 
 3. **[Prowlarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Prowlarr-Configuration)** — Add indexers and connect to Radarr/Sonarr
 4. **[Radarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Radarr-Configuration)** — Set download client, root folder, quality profiles
 5. **[Sonarr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Sonarr-Configuration)** — Same as Radarr but for TV shows
-6. **[Overseerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Overseerr-Configuration)** — Connect to Plex, Radarr, and Sonarr; invite users
+6. **[Seerr Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Seerr-Configuration)** — Connect to Plex, Radarr, and Sonarr; invite users
 
 ### Full Stack URLs (once running)
 
@@ -84,10 +105,4 @@ After running `docker compose up -d`, configure each app in order. Each one has 
 | Prowlarr | `http://localhost:9696` |
 | Radarr | `http://localhost:7878` |
 | Sonarr | `http://localhost:8989` |
-| Overseerr | `http://localhost:5055` |
-
----
-
-## 💬 Questions?
-
-Use the [Discussions](https://github.com/NolieRavioli/Windows-Docker-Mediastack/discussions/q-a) tab. There's a **Questions** category — ask anything there.
+| Seerr | `http://localhost:5055` |

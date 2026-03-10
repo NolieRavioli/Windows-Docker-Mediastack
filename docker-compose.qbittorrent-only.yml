@@ -1,11 +1,11 @@
 services:
     qbittorrent:
         image: binhex/arch-qbittorrentvpn:latest
-        container_name: qbittorent
+        container_name: qbittorrent
         ports:
             - "8113:8113"  # qBittorrent Web UI accessible at http://<YOUR_PC_IP>:8113
         volumes:
-            - /change/to/path/to/your/configuration/storage/for/qbittorent:/config
+            - ./config/qbittorrent:/config
             - /path/to/your/hard/drive/BIG/storage/data:/data
         logging:
             driver: "json-file"

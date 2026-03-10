@@ -1,4 +1,4 @@
-NEVER remove anything like 🏠 ⬅️ or ➡️ from this repo.
+NEVER remove any emoji like 📋 💬 🏠 ⬅️ ➡️ ETC... from this repo.
 
 Windows Docker Desktop uses Windows-style path (I still like to use `/` for windows: like `C:/Users/YourName/`)
 

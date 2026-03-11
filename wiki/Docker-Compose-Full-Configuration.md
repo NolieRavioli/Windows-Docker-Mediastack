@@ -1,8 +1,18 @@
-# Docker Compose Configuration
+# Docker Compose (Full Stack Configuration)
 
-Extract the repo, copy the stack template you want to `docker-compose.yml`, replace the placeholders, create the shared folder layout, and start the stack from PowerShell.
+Extract the repo, copy the full-stack template to `docker-compose.yml`, replace the placeholders, create the shared folder layout, and start the stack from PowerShell.
 
 **[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Docker Desktop Installation](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Desktop-Installation)** | **[➡️ qBittorrentVPN Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)**
+
+## Drive Strategy: Single Drive Recommended
+
+The full stack (Radarr, Sonarr, Prowlarr) uses **hardlinks** for efficient file management. Hardlinks work best when all data lives on the **same filesystem**. 
+
+**Single Drive (Recommended):** All downloads and media on one drive (e.g., `D:/MediaStack/`) enables instant hardlinks when Radarr/Sonarr move files from `/data/torrents/` to `/data/media/`.
+
+**Multiple Drives:** If you have separate drives for TV and Movies, hardlinks won't work—files will be copied instead, consuming extra disk space and time. If you prefer multiple drives, either:
+- Consolidate to a single drive now using Windows Storage Spaces
+- Start with a single drive and manually move files to other drives later as storage fills up
 
 ## Before You Start
 
@@ -10,7 +20,7 @@ Extract the repo, copy the stack template you want to `docker-compose.yml`, repl
 - Use PowerShell or Command Prompt, not Portainer, for starting and stopping the stack.
 - The examples below assume you extracted the repo to `C:\Users\YourName\Windows-Docker-Mediastack`.
 
-## Common Setup
+## Common Steps
 
 ### Step 1 - Download and Extract the Repo
 
@@ -25,8 +35,6 @@ Extract the repo, copy the stack template you want to `docker-compose.yml`, repl
 cd 'C:\Users\YourName\Windows-Docker-Mediastack'
 ```
 
-## Full Stack
-
 ### Step 3 - Copy the Full-Stack Template
 
 ```powershell
@@ -35,9 +43,7 @@ Copy-Item -Force .\docker-compose.full-stack.yml .\docker-compose.yml
 
 ### Step 4 - Create the Shared Folder Layout
 
-This repo uses one shared data tree so qBittorrent downloads and Arr imports stay under the same root.
-
-Example host layout:
+All data goes under a single root on one drive. This `D:\MediaStack\` example shows the complete single-drive structure:
 
 ```text
 D:\MediaStack\
@@ -80,7 +86,7 @@ Open `docker-compose.yml` in VS Code or Notepad and replace these values:
 
 | Find | Replace with | Example |
 | --- | --- | --- |
-| `/path/to/your/hard/drive/BIG/storage/` | Your storage root on the large drive | `D:/MediaStack/` |
+| `/path/to/your/hard/drive/BIG/storage/` | Your single drive root for all data | `D:/MediaStack/` |
 | `America/Denver` | Your timezone | `America/New_York` |
 | `192.168.1.0/24` | Your LAN subnet | `192.168.0.0/24` |
 | `<<<YOUR_PROTONVPN_USERNAME>>>` | Your ProtonVPN VPN username | `abc123456` |
@@ -88,14 +94,14 @@ Open `docker-compose.yml` in VS Code or Notepad and replace these values:
 | `<<<CHOOSE_A_USERNAME>>>` | The NZBGet username you want to use | `nzbget` |
 | `<<<CHOOSE_A_PASSWORD>>>` | The NZBGet password you want to use | `change-me-now` |
 
-Leave the `./config/...` paths alone. They keep your container configs under the extracted repo folder.
+Keep the `./config/...` paths unchanged—they stay under the extracted repo folder.
 
 With the example above, the main bind mounts become:
 
-- `D:/MediaStack/data:/data`
-- `D:/MediaStack/media:/media`
+- `D:/MediaStack/data:/data` (all downloads, imports, and media)
+- `D:/MediaStack/media:/media` (legacy mount, still used by compose file)
 
-Later app configuration pages should still use `/data/media/...` for Radarr and Sonarr root folders.
+All Radarr and Sonarr root folder paths should use `/data/media/...` for hardlink compatibility.
 
 ### Step 6 - Download and Place the Proton WireGuard Config
 

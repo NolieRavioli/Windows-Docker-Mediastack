@@ -1,8 +1,22 @@
-# Docker Compose Configuration
+# Docker Compose (qBittorrent-Only Configuration)
 
-Extract the repo, copy the stack template you want to `docker-compose.yml`, replace the placeholders, create the shared folder layout, and start the stack from PowerShell.
+Extract the repo, copy the qBittorrent-only template to `docker-compose.yml`, replace the placeholders, and launch from PowerShell. **Works with single or multiple drives.**
 
 **[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **[⬅️ Docker Desktop Installation](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Desktop-Installation)** | **[➡️ qBittorrentVPN Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/qBittorrentVPN-Configuration)**
+
+## Drive Strategy: Choose What Works for You
+
+The qBittorrent-only stack is flexible and works with **any drive layout** since there's no hardlink requirement (no Arr suite).
+
+**Multiple Drives (Example):**
+- `T:/` for TV downloads and library
+- `G:/` for Movie downloads and library
+- `D:/` for Music downloads and library
+
+**Single Drive (Example):**
+- `D:/MediaStack/` for all downloads and media
+
+Choose whichever drive layout you prefer. The qBittorrent categories will reflect your folder structure.
 
 ## Before You Start
 

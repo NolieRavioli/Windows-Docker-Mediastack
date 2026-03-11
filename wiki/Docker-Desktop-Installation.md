@@ -117,4 +117,4 @@ The most recent version of Windows Subsystem for Linux is already installed.
 
 ---
 
-**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **Choose your path forward:** **[➡️ Docker Compose qBittorrent-Only Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-qBitConfiguration)** **OR** **[➡️ Docker Compose Full Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Configuration)**
+**[🏠 Wiki Home](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/)** | **Choose your path forward:** **[➡️ Docker Compose qBittorrent-Only Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-qBittorrent-Only-Configuration)** **OR** **[➡️ Docker Compose Full Stack Configuration](https://github.com/NolieRavioli/Windows-Docker-Mediastack/wiki/Docker-Compose-Full-Configuration)**

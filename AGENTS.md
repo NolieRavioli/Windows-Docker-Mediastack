@@ -2,6 +2,16 @@ NEVER remove any emoji like 📋 💬 🏠 ⬅️ ➡️ ETC... from this repo.
 
 Windows Docker Desktop uses Windows-style path (I still like to use `/` for windows: like `C:/Users/YourName/`)
 
+`./wiki/` contains md documents for step-by-step installation and configuration of the docker media stack on windows.
+  - `./wiki/Docker-Desktop-Installation.md`     STATUS: COMPLETE - DO NOT CHANGE
+  - `./wiki/Docker-Compose-Configuration.md`    STATUS: COMPLETE - DO NOT CHANGE
+  - `./wiki/qBittorrentVPN-Configuration.md`    STATUS: UNTESTED
+  - `./wiki/NZBGet-Configuration.md`            STATUS: UNTESTED
+  - `./wiki/Prowlarr-Configuration.md`          STATUS: UNTESTED
+  - `./wiki/Radarr-Configuration.md`            STATUS: UNTESTED
+  - `./wiki/Sonarr-Configuration.md`            STATUS: UNTESTED
+  - `./wiki/Seerr-Configuration.md`             STATUS: UNTESTED
+
 # Deployment notes
 
 A windows user should never WRITE wg0.conf or things will break. the `.yml` files do not break when you edit them on windows.

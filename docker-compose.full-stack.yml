@@ -26,13 +26,16 @@ services:
             - PUID=1000
             - PGID=1000
 
-            # WIREGUARD + ProtonVPN (default):
+            # ProtonVPN (default):
             - VPN_PROV=protonvpn
-            - VPN_CLIENT=wireguard
             - STRICT_PORT_FORWARD=yes
             - NAME_SERVERS=1.1.1.1,1.0.0.1
             - VPN_USER=<<<YOUR_PROTONVPN_USERNAME>>>+pmp
             - VPN_PASS=<<<YOUR_PROTONVPN_VPN_PASSWORD>>>
+
+            # WIREGUARD or OPENVPN (comment out the ProtonVPN settings above and uncomment these):
+            - VPN_CLIENT=wireguard
+            #- VPN_CLIENT=openvpn
 
         # OPENVPN (comment out the privileged/sysctls block below and uncomment this):
         #cap_add:
